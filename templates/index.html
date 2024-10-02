@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>Sports Sections</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <h1>Sports Sections</h1>
+    <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Search for a section">
+        <input type="submit" value="Search">
+    </form>
+    <ul>
+    {% for section in sections %}
+            <li>
+<!--                <h2>{{ section.name }}</h2>-->
+                <a href="/section/{{ section.id }}">{{ section.name }}</a>
+                <p>{{ section.description }}</p>
+            </li>
+    {% endfor %}
+    </ul>
+    <p>{{ message }}</p>
+</body>
+</html>

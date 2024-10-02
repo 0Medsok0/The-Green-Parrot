@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ section.name }}</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='section.css') }}">
+</head>
+<body>
+    <h1>{{ section.name }}</h1>
+    <p>{{ section.description }}</p>
+    <a href="/">Back to home</a>
+</body>
+</html>
