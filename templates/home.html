@@ -7,17 +7,17 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta charset="UTF-8" />
-    <title>Sections</title>
+    <title>Sports Sections</title>
 
   </head>
   <body>
-    <h1>{{ section.name }}</h1>
-    <p>{{ section.description }}</p>
+    <h1>Select a City</h1>
     <ul>
-      {% for parameter in section.parameters %}
-      <li>{{ parameter.name }}: {{ parameter.value }}</li>
+      {% for city in cities %}
+      <li>
+        <a href="{{ url_for('search', city_id=city.id) }}">{{ city.name }}</a>
+      </li>
       {% endfor %}
-
     </ul>
   </body>
 </html>

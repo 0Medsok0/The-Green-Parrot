@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8" />
+    <title>Sports Sections Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/search.css') }}">
+  </head>
+  <body>
+    <h1>Search for Sports Sections</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.city.label }} {{ form.city() }} <br>
+        {{ form.sport.label }} {{ form.sport() }} <br>
+        {{ form.physical_fitness.label }} {{ form.physical_fitness() }} <br>
+        {{ form.schedule.label }} {{ form.schedule() }} <br>
+        {{ form.location.label }} {{ form.location() }} <br>
+        {{ form.cost.label }} {{ form.cost() }}<br>
+        {{ form.coach_reputation.label }} {{ form.coach_reputation() }}<br>
+        {{ form.atmosphere.label }} {{ form.atmosphere() }}<br>
+        {{ form.club_achievements.label }} {{ form.club_achievements() }}<br>
+        {{ form.development_opportunities.label }} {{ form.development_opportunities() }}<br>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if sections %}
+    <h2>Matching Sections</h2>
+    <ul>
+    {% for section in sections %}
+        <li>
+            <h3>{{ section.name }}</h3>
+            <p>{{ section.description }}</p>
+            <ul>
+            {% for parameter in section.parameters %}
+                <li>{{ parameter.name }}: {{ parameter.value }}</li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+    {% elif no_results %}
+    <p>No sections match the search criteria.</p>
+    {% endif %}
+
+
+  </body>
+</html>
