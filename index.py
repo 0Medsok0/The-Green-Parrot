@@ -4,6 +4,7 @@ from wtforms import Form, BooleanField, StringField, PasswordField, validators, 
 from flask_wtf import FlaskForm
 from parameters import *
 from mod import db, City, Sport, Section, Parameter, init_db
+from sqlalchemy import text
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key'
@@ -17,10 +18,10 @@ def home():
     cities = City.query.all()
     return render_template('home.html', cities=cities)
 
-
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     form = SearchForm()
+    cities = City.query.all()
     if form.validate_on_submit():
         print(form.data)
         sections = Section.query.filter_by(city_id=form.city.data, sport_id=form.sport.data)
@@ -39,22 +40,55 @@ def search():
         sections = sections.all()
 
         if sections:
-            return render_template('search.html', form=form, sections=sections)
+            return render_template('search.html', form=form, sections=sections, cities=cities, title="Search")
         else:
-            return render_template('search.html', form=form, no_results=True)
+            return render_template('search.html', form=form, no_results=True, cities=cities, title="Search")
 
-    return render_template('search.html', form=form)
-
+    return render_template('search.html', form=form, cities=cities, title="Search")
 
 @app.route('/section/<int:id>')
 def section(id):
     section = Section.query.get_or_404(id)
-    return render_template('section.html', section=section)
+    cities = City.query.all()
+    return render_template('section.html', section=section, cities=cities, title=section.name)
+
+@app.route('/page1')
+def page1():
+    cities = City.query.all()
+    return render_template('page1.html', cities=cities, title="Новости спорта")
+
+@app.route('/page2')
+def page2():
+    cities = City.query.all()
+    return render_template('page2.html', cities=cities, title="Спортивное питание")
+
+@app.route('/page3')
+def page3():
+    cities = City.query.all()
+    return render_template('page3.html', cities=cities, title="Спортивная одежда")
+
+@app.route('/page4')
+def page4():
+    cities = City.query.all()
+    return render_template('page4.html', cities=cities, title="Page 1")
+
+@app.route('/page5')
+def page5():
+    cities = City.query.all()
+    return render_template('page5.html', cities=cities, title="Page 2")
+
+@app.route('/page6')
+def page6():
+    cities = City.query.all()
+    return render_template('page6.html', cities=cities, title="Page 3")
+
 
 
 if __name__ == '__main__':
     with (app.app_context()):
         db.create_all()
+        # db.session.execute(text('ALTER TABLE city ADD COLUMN image VARCHAR(200)'))
+        # db.session.commit()
 
         def add_section_if_not_exists(name, description, city, sport, parameters):
 

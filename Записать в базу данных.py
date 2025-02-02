@@ -108,19 +108,45 @@
 
 # Создает города 10 шт
 
-"""
-        # Создает города 10 шт
-        
-        city_names = ['Barnaul', 'Ufa', 'Tomsk', 'Novosibirsk', 'Kemerovo', 'Moscow', 'Saint Petersburg',
-                      'Ekaterinburg', 'Kazan', 'Chelyabinsk']
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from mod import db, City, Sport, Section, Parameter, init_db
+from sqlalchemy import text
 
-        existing_city_names = [city.name for city in City.query.all()]
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your-secret-key'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+# Инициализируем модели
+init_db(app)
 
-        new_cities = [City(name=city_name) for city_name in city_names if city_name not in existing_city_names]
+with app.app_context():
+    # Создает города 10 шт
+    city_names = ['Barnaul', 'Ufa', 'Tomsk', 'Novosibirsk', 'Kemerovo', 'Moscow', 'Saint Petersburg',
+                  'Ekaterinburg', 'Kazan', 'Chelyabinsk']
+    city_images = {
+        'Barnaul': 'static/images/barn.jpg',
+        'Ufa': 'static/images/ufa.jpg',
+        'Tomsk': 'static/images/tomsk.jpg',
+        'Novosibirsk': 'static/images/novosibirsk.jpg',
+        'Kemerovo': 'static/images/kemerovo.jpg',
+        'Moscow': 'static/images/moscow.jpg',
+        'Saint Petersburg': 'static/images/saint_petersburg.jpg',
+        'Ekaterinburg': 'static/images/ekaterinburg.jpg',
+        'Kazan': 'static/images/kazan.jpg',
+        'Chelyabinsk': 'static/images/chelyabinsk.jpg'
+    }
 
-        db.session.add_all(new_cities)
-        db.session.commit() 
-"""
+    existing_city_names = [city.name for city in City.query.all()]
+
+    for city_name in city_names:
+        if city_name not in existing_city_names:
+            new_city = City(name=city_name, image=city_images[city_name])
+            db.session.add(new_city)
+            print(f"Картинка добавлена: {city_name}")
+
+    db.session.commit()
+    print("Данные добавлены успешно!")
+
 
 
 # Создаем виды спорта 10 шт
