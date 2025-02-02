@@ -1,23 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+{% extends "base.html" %} {% block content %}
+<h1>Выберите город</h1>
+<div class="card-container">
+  {% for city in cities %}
+  <div class="card">
+    <img src="{{ city.image }}" alt="{{ city.name }}" />
+    <h2>{{ city.name }}</h2>
+    <a href="{{ url_for('search', city_id=city.id) }}">Подробнее</a>
+  </div>
+  {% endfor %}
+</div>
+<h1>Инофрмационное поле</h1>
+<div class="card-container">
+  <div class="card large" style='width: 38%; margin-left: 15%'>
+    <img
+      src="{{ url_for('static', filename='images/large_card_image.jpg') }}"
+      alt="Large Card"
     />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta charset="UTF-8" />
-    <title>Sports Sections</title>
-
-  </head>
-  <body>
-    <h1>Select a City</h1>
-    <ul>
-      {% for city in cities %}
-      <li>
-        <a href="{{ url_for('search', city_id=city.id) }}">{{ city.name }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+    <h2>Виды спорта</h2>
+    <a href="{{ url_for('page4') }}">Читать больше</a>
+  </div>
+  <div class="small-cards">
+    <div class="card small" style='width: 55%;'>
+      <img
+        src="{{ url_for('static', filename='images/small_card_image1.jpg') }}"
+        alt="Small Card 1"
+      />
+      <h2>Олимпийские игры</h2>
+      <a href="{{ url_for('page5') }}">Читать больше</a>
+    </div>
+    <div class="card small" style='width: 55%;'>
+      <img
+        src="{{ url_for('static', filename='images/small_card_image2.jpg') }}"
+        alt="Small Card 2"
+      />
+      <h2>Марафон</h2>
+      <a href="{{ url_for('page6') }}">Читать больше</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

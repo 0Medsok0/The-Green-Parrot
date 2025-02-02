@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Марафон</title>
+  <style>
+    .container {
+        padding: 2em;
+        text-align: justify;
+      }
+
+      .container h2 {
+        color: rgb(255, 255, 255);
+      }
+
+      .container p {
+        line-height: 1.6;
+        color: rgb(255, 255, 255);
+        margin-top: 10px;
+      }
+
+      .container a {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .container a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+
+      .container a:active {
+        color: #1abc9c;
+      }
+
+      .container a:visited {
+        color: #9b59b6;
+      }
+
+      .container img {
+        margin-left:25%;
+        width: 50%;
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img
+      src="{{ url_for('static', filename='images/marafon.jpg') }}"
+      alt="Картинка марафона"
+    />
+    <h2>История марафона</h2>
+    <p>Марафон — это беговая дисциплина на дистанцию 42 километра 195 метров. Название происходит от легенды о греческом воине Фидиппиде, который пробежал от Марафона до Афин, чтобы сообщить о победе над персами.<br/> <a href="https://ru.wikipedia.org/wiki/Марафонский_бег" target="_blank">Узнать больше</a></p>
+    <br /><br />
+
+    <h2>Современные марафоны</h2>
+    <p>Современные марафоны проводятся по всему миру и привлекают тысячи участников. Одни из самых известных марафонов включают Бостонский марафон, Нью-Йоркский марафон и Лондонский марафон.<br/> <a href="https://ru.wikipedia.org/wiki/Марафонский_бег" target="_blank">Узнать больше</a></p>
+    <br /><br />
+
+    <h2>Подготовка к марафону</h2>
+    <p>Подготовка к марафону требует систематических тренировок, правильного питания и восстановления. Важно следовать плану тренировок и постепенно увеличивать дистанцию.<br/> <a href="https://ru.wikipedia.org/wiki/Марафонский_бег" target="_blank">Узнать больше</a></p>
+    <br /><br />
+
+    <h2>Знаменитые марафонцы</h2>
+    <p>Многие бегуны стали легендами марафонского бега, устанавливая мировые рекорды и выигрывая престижные соревнования.<br/> <a href="https://ru.wikipedia.org/wiki/Марафонский_бег" target="_blank">Узнать больше</a></p>
+    <br /><br />
+
+    <h2>Советы для начинающих</h2>
+    <p>Если вы только начинаете заниматься бегом, важно начать с коротких дистанций и постепенно увеличивать нагрузку. Регулярные тренировки и правильное питание помогут вам достичь цели.<br/> <a href="https://ru.wikipedia.org/wiki/Марафонский_бег" target="_blank">Узнать больше</a></p>
+    <br /><br />
+  </div>
+</body>
+</html>
+{% endblock %}

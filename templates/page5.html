@@ -1,0 +1,117 @@
+{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Олимпийские игры</title>
+    <style>
+      .container {
+        padding: 2em;
+        text-align: justify;
+      }
+
+      .container h2 {
+        color: rgb(255, 255, 255);
+      }
+
+      .container p {
+        line-height: 1.6;
+        color: rgb(255, 255, 255);
+        margin-top: 10px;
+      }
+
+      .container a {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .container a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+
+      .container a:active {
+        color: #1abc9c;
+      }
+
+      .container a:visited {
+        color: #9b59b6;
+      }
+      .container img {
+        margin-left:25%;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="{{ url_for('static', filename='images/olimp_game.jpg') }}"
+        alt="Картинка олимпийских игр"
+      />
+      <h2>История Олимпийских игр</h2>
+      <p>
+        Олимпийские игры — это крупнейшее международное спортивное событие,
+        которое проводится каждые четыре года. Первые современные Олимпийские
+        игры были проведены в 1896 году в Афинах, Греция.<br />
+        <a href="https://ru.wikipedia.org/wiki/Олимпийские_игры" target="_blank"
+          >Узнать больше</a
+        >
+      </p>
+      <br /><br />
+
+      <h2>Летние Олимпийские игры</h2>
+      <p>
+        Летние Олимпийские игры включают в себя широкий спектр спортивных
+        дисциплин, таких как легкая атлетика, плавание, гимнастика, футбол и
+        многие другие.<br />
+        <a
+          href="https://ru.wikipedia.org/wiki/Летние_Олимпийские_игры"
+          target="_blank"
+          >Узнать больше</a
+        >
+      </p>
+      <br /><br />
+
+      <h2>Зимние Олимпийские игры</h2>
+      <p>
+        Зимние Олимпийские игры проводятся каждые четыре года и включают зимние
+        виды спорта, такие как лыжные гонки, фигурное катание, хоккей и
+        биатлон.<br />
+        <a
+          href="https://ru.wikipedia.org/wiki/Зимние_Олимпийские_игры"
+          target="_blank"
+          >Узнать больше</a
+        >
+      </p>
+      <br /><br />
+
+      <h2>Олимпийские символы</h2>
+      <p>
+        Олимпийские символы включают в себя олимпийские кольца, олимпийский
+        флаг, олимпийский огонь и девиз "Быстрее, выше, сильнее".<br />
+        <a
+          href="https://ru.wikipedia.org/wiki/Олимпийские_символы"
+          target="_blank"
+          >Узнать больше</a
+        >
+      </p>
+      <br /><br />
+
+      <h2>Олимпийские чемпионы</h2>
+      <p>
+        За годы проведения Олимпийских игр многие спортсмены стали легендами,
+        завоевав многочисленные медали и установив мировые рекорды.<br />
+        <a
+          href="https://ru.wikipedia.org/wiki/Олимпийские_чемпионы"
+          target="_blank"
+          >Узнать больше</a
+        >
+      </p>
+      <br /><br />
+    </div>
+  </body>
+</html>
+{% endblock %}

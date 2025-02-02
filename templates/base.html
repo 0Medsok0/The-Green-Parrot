@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/search.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="info-header">
+        <h1>Спортивный клуб мандарин</h1>
+        <div class="info-header-mini">
+          <h4>Контакты:</h4>
+          <p>г.Москва пер.Програмистов</p>
+          <p>Телефон: 8-495-352-12-12</p>
+          <p>Почта: test-email@mail.ru</p>
+        </div>
+      </div>
+      <img
+        src="{{ url_for('static', filename='images/header_image.jpg') }}"
+        alt="Footer Image"
+        class="header-image"
+      />
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Домашняя страница</a></li>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Выбор города</button>
+              <div class="dropdown-content">
+                {% for city in cities %}
+                <a href="{{ url_for('search', city_id=city.id) }}"
+                  >{{ city.name }}</a
+                >
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+          <li><a href="{{ url_for('page1') }}">Новости спорта</a></li>
+          <li><a href="{{ url_for('page2') }}">Спортивное питание</a></li>
+          <li><a href="{{ url_for('page3') }}">Одежда для спорта</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer>
+      <p>&copy; 2024 Спортивный клуб мандарин</p>
+    </footer>
+  </body>
+</html>

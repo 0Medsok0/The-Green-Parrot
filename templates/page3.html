@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Информация о спортивной одежде</h1>
+<div class="clothing-container">
+  <div class="clothing-item">
+    <h2>Костюм Nike мужской</h2>
+    <img
+      src="{{ url_for('static', filename='images/1.jpeg') }}"
+      alt="sport_image_1"
+    />
+    <p>Мужской костюм фирмы Nike отлично подойдет для заняитй спортом в спортзале.</p>
+  </div>
+  <div class="clothing-item">
+    <h2>Костюм Nike мужской</h2>
+    <img
+      src="{{ url_for('static', filename='images/2.jpg') }}"
+      alt="sport_image_2"
+    />
+    <p>Мужской костюм фирмы Nike отлично подойдет для заняитй спортом в спортзале.</p>
+  </div>
+  <div class="clothing-item">
+    <h2>Костюм детский</h2>
+    <img
+      src="{{ url_for('static', filename='images/3.jpg') }}"
+      alt="sport_image_3"
+    />
+    <p>Детский костюм фирмы Nike отлично подойдет для заняитй спортом в спортзале.</p>
+  </div>
+  <div class="clothing-item-big">
+    <h2>Костюм женский</h2>
+    <img
+      src="{{ url_for('static', filename='images/4.jpeg') }}"
+      alt="sport_image_4"
+    />
+    <p>Женский костюм фирмы Nike отлично подойдет для заняитй спортом в спортзале</p>
+  </div>
+  
+</div>
+{% endblock %}
