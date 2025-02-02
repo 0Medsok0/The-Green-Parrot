@@ -1,7 +1,7 @@
 # The-Green-Parrot
 
 <div>
-    <img src="picture/green-parrot.png" alt="">
+    <img src="picture/green-parrot.png" alt="Картинка сервиса">
 </div>
 
 ## Функционал
